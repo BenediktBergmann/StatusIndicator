@@ -1,24 +1,24 @@
 //sudo apt-get install wiringpi
 //npm install node-blinkt
-//var Blinkt = require('node-blinkt);
-// var leds = new Blinkt;
+//const Blinkt = require('node-blinkt');
+//const leds = new Blinkt;
 const { DEBUG, BRIGHTNESS } = require('./../helper/config');
 
 function setColor(red: number, green: number, blue: number, brightness: number){
-    if(DEBUG){
+    if(DEBUG === "true"){
         console.log(`Setting leds with: Red: ${red}, Green: ${green}, Blue: ${blue} and Brightness: ${brightness}`);
     }
 
     //TODO: set LEDs
     //leds.setup();
     //leds.clearAll();
-    //leds.setAllPixel(red, green, blue, brightness);
+    //leds.setAllPixels(red, green, blue, brightness);
     //leds.sendUpdate();
 }
 
 export class ledService{
     clearLEDs(): void{
-        if(DEBUG){
+        if(DEBUG === "true"){
             console.log("Clear all LEDs");
         }
         
@@ -28,7 +28,7 @@ export class ledService{
     };
 
     setAvailable(): void {
-        if(DEBUG){
+        if(DEBUG === "true"){
             console.log("Set LEDs to green");
         }
         
@@ -36,15 +36,15 @@ export class ledService{
     };
 
     setAway(): void{
-        if(DEBUG){
+        if(DEBUG === "true"){
             console.log("Set LEDs to yellow");
         }
         
-        setColor(0, 255, 100, BRIGHTNESS);
+        setColor(255, 100, 0, BRIGHTNESS);
     }
 
     setBusy(): void {
-        if(DEBUG){
+        if(DEBUG === "true"){
             console.log("Set LEDs to red");
         }
         
