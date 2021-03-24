@@ -1,4 +1,3 @@
-///<reference path="app.d.ts" />
 ///<reference path="./services/ledService.d.ts" />
 ///<reference path="./services/storageService.d.ts" />
 
