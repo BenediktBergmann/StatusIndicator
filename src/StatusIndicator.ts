@@ -5,7 +5,7 @@ const {POLL_INTERVALL, POLL_WEEKENDS, START_TIME, END_TIME, DEBUG } = require('.
 
 import "isomorphic-fetch";
 import { Client } from "@microsoft/microsoft-graph-client";
-import { CustomAuthenticationProvider } from "././helper/authProvider";
+import { CustomAuthenticationProvider } from "./helper/authProvider";
 import { Availability } from './models/availability';
 import cron from 'node-cron';
 
