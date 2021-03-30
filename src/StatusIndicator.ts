@@ -81,6 +81,7 @@ async function checkStatus(){
             }
         } catch (error) {
             console.log(error);
+            await _ledService.errorBlink();
             throw error;
         }
     } else {

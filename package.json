@@ -2,9 +2,9 @@
   "name": "statusindicator",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
+  "main": "dist/StatusIndicator.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "start": "tsc && node dist/StatusIndicator.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

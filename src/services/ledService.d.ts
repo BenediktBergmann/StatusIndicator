@@ -1,6 +1,7 @@
 export declare class ledService {
-    clearLEDs(): void;
-    setAvailable(): void;
-    setAway(): void;
-    setBusy(): void;
+    async clearLEDs(): Promise<void>;
+    async setAvailable(): Promise<void>;
+    async setAway(): Promise<void>;
+    async setBusy(): Promise<void>;
+    async errorBlink(): Promise<void>;
 }

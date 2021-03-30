@@ -1,6 +1,3 @@
-import { AccessToken } from "../models/accessToken";
-const { APP_ID } = require('./../helper/config');
-
 import storage from 'node-persist';
 
 let isInitiated = false;
@@ -11,24 +8,8 @@ export class storageService {
         await storage.init()
     };
 
-    async setToken(token: AccessToken): Promise<void> {
-        await this.setToStorage(`${APP_ID}-token`, JSON.stringify(token));
-    };
-
-    async getToken(): Promise<AccessToken | null> {
-        const token = await this.getFromStorage(`${APP_ID}-token`);
-        if (token) {
-            return JSON.parse(token);
-        } else {
-            return null;
-        }
-    };
-
-    async removeToken(): Promise<void> {
-        await this.removeFromStorage(`${APP_ID}-token`);
-    };
-
-    async setDeviceCodeDate(date: Date): Promise<void> {
+    async setDeviceCodeDate(): Promise<void> {
+        const date = new Date();
         await this.setToStorage(deviceCodeDateStorageIdentifier, JSON.stringify(date));
     };
 

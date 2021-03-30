@@ -20,16 +20,22 @@ function setColor(red: number, green: number, blue: number, brightness: number){
 
 export class ledService{
     clearLEDs(): void{
+        if(lastStatus === "cleared"){
+            return;
+        }
+
         if(DEBUG === "true"){
             console.log("Clear all LEDs");
         }
+
+        lastStatus = "cleared";
         
         //leds.setup();
         //leds.clearAll();
         //leds.sendUpdate();
     };
 
-    setAvailable(): void {
+    async setAvailable(): Promise<void> {
         if(lastStatus === "Available"){
             return;
         }
@@ -39,11 +45,11 @@ export class ledService{
         }
         
         setColor(0, 255, 0, BRIGHTNESS);
-        
+
         lastStatus = "Available";
     };
 
-    setAway(): void{
+    async setAway(): Promise<void>{
         if(lastStatus === "Away"){
             return;
         }
@@ -57,7 +63,7 @@ export class ledService{
         lastStatus = "Away";
     }
 
-    setBusy(): void {
+    async setBusy(): Promise<void> {
         if(lastStatus === "Busy"){
             return;
         }
@@ -69,4 +75,24 @@ export class ledService{
 
         lastStatus = "Busy";
     };
+
+    async errorBlink(): Promise<void> {
+        await this.setBusy();
+        await sleep(1000);
+        await this.clearLEDs();
+        await sleep(500);
+        await this.setBusy();
+        await sleep(1000);
+        await this.clearLEDs();
+        await sleep(500);
+        await this.setBusy();
+        await sleep(1000);
+        await this.clearLEDs();
+    }
 }
+
+function sleep(ms: number) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }   
