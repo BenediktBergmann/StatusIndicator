@@ -38,6 +38,9 @@ async function app(){
 }
 
 async function checkStatus(){
+    console.log("--------------------------------------------------")
+    console.log(new Date());
+    console.log("Checking Presence Status");
     if(withinConfiguredTimeframe()){
         if(DEBUG === "true"){
             console.log("Within configured timeframe. Will proceed");

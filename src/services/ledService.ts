@@ -11,7 +11,6 @@ function setColor(red: number, green: number, blue: number, brightness: number){
         console.log(`Setting leds with: Red: ${red}, Green: ${green}, Blue: ${blue} and Brightness: ${brightness}`);
     }
 
-    //TODO: set LEDs
     //leds.setup();
     //leds.clearAll();
     //leds.setAllPixels(red, green, blue, brightness);
