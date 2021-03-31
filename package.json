@@ -5,6 +5,7 @@
   "main": "dist/StatusIndicator.js",
   "scripts": {
     "start": "tsc && node dist/StatusIndicator.js",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
