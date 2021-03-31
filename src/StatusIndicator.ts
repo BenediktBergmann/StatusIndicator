@@ -1,7 +1,7 @@
 ///<reference path="./services/ledService.d.ts" />
 ///<reference path="./services/storageService.d.ts" />
 
-const {POLL_INTERVALL, POLL_WEEKENDS, START_TIME, END_TIME, DEBUG } = require('./helper/config');
+const {POLL_INTERVAL, POLL_WEEKENDS, START_TIME, END_TIME, DEBUG } = require('./helper/config');
 
 import "isomorphic-fetch";
 import { Client } from "@microsoft/microsoft-graph-client";
@@ -19,7 +19,7 @@ async function app(){
     _storageService.removeDeviceCodeDate();
     checkStatus();
 
-    const intervall = (POLL_INTERVALL > 0)? POLL_INTERVALL : 1;
+    const intervall = (POLL_INTERVAL > 0 && POLL_INTERVAL < 60)? POLL_INTERVAL : 1;
 
     const seconds = (DEBUG === "true")? "*/15 " : "";
     const minutes = "*/" + intervall + " ";
