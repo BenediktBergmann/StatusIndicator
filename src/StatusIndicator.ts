@@ -17,6 +17,7 @@ const _storageService = new storageService();
 
 async function app(){
     _storageService.removeDeviceCodeDate();
+    //_storageService.clear();
     checkStatus();
 
     const intervall = (POLL_INTERVAL > 0 && POLL_INTERVAL < 60)? POLL_INTERVAL : 1;

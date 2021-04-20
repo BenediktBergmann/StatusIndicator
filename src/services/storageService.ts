@@ -8,6 +8,15 @@ export class storageService {
         await storage.init()
     };
 
+    async clear(): Promise<void> {
+        if(!isInitiated){
+            await this.init();
+            isInitiated = true;
+        }
+
+        await storage.clear();
+    };
+
     async setDeviceCodeDate(): Promise<void> {
         const date = new Date();
         await this.setToStorage(deviceCodeDateStorageIdentifier, JSON.stringify(date));
