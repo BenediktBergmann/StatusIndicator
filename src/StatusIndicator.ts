@@ -17,7 +17,7 @@ const _storageService = new storageService();
 
 async function app(){
     _storageService.removeDeviceCodeDate();
-    //_storageService.clear();
+    _storageService.clear();
     checkStatus();
 
     const intervall = (POLL_INTERVAL > 0 && POLL_INTERVAL < 60)? POLL_INTERVAL : 1;
@@ -58,6 +58,23 @@ async function checkStatus(){
             if(DEBUG === "true"){
                 console.log("Attempt to get presence");
             }
+
+            /*const scheduleInformation = {
+                schedules: ['Solutions@crmkonsulterna.se'],
+                startTime: {
+                    dateTime: '2021-04-05T07:00:00',
+                    timeZone: 'Europe/Berlin'
+                },
+                endTime: {
+                    dateTime: '2021-04-05T18:00:00',
+                    timeZone: 'Europe/Berlin'
+                },
+                availabilityViewInterval: 60
+            };
+            
+            let test = await graphClient.api('/me/calendar/getSchedule')
+                .version('beta')
+                .post(scheduleInformation);*/
             
             let presence = await graphClient.api("me/presence").get();
 

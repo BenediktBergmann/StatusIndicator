@@ -49,6 +49,10 @@ export class CustomAuthenticationProvider implements AuthenticationProvider {
                 return await this.pca.acquireTokenSilent({scopes: this.scopes, account: accounts[0]}).then(async (tokenResponse: any) => {
                     console.log("Logged in as: " + tokenResponse.account.username)
 
+                    if(DEBUG === "true"){
+                        console.log("AccessToken: " + tokenResponse.accessToken);
+                    }
+
                     return tokenResponse.accessToken;
                 }).catch(async (error: any) => {
                     console.log(error);
