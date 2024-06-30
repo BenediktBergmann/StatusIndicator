@@ -1,20 +1,25 @@
-//sudo apt-get install wiringpi
-//npm install node-blinkt
-//const Blinkt = require('node-blinkt');
-//const leds = new Blinkt;
 const { DEBUG, BRIGHTNESS } = require('./../helper/config');
+const { exec } = require('child_process');
 
 let lastStatus = "";
 
 function setColor(red: number, green: number, blue: number, brightness: number){
     if(DEBUG === "true"){
         console.log(`Setting leds with: Red: ${red}, Green: ${green}, Blue: ${blue} and Brightness: ${brightness}`);
+        return;
     }
 
-    //leds.setup();
-    //leds.clearAll();
-    //leds.setAllPixels(red, green, blue, brightness);
-    //leds.sendUpdate();
+    exec(`python3 ../python/setColor.py ${brightness} ${red} ${green} ${blue}`, (error: any, stdout: any, stderr: any) => {
+        if (error) {
+          console.log(`error: ${error.message}`);
+        }
+        else if (stderr) {
+          console.log(`stderr: ${stderr}`);
+        }
+        else {
+          console.log(stdout);
+        }
+      })
 }
 
 export class ledService{
@@ -28,10 +33,22 @@ export class ledService{
         }
 
         lastStatus = "cleared";
-        
-        //leds.setup();
-        //leds.clearAll();
-        //leds.sendUpdate();
+
+        if(DEBUG === "true"){
+            return;
+        }
+
+        exec('python3 ../python/clear.py', (error: any, stdout: any, stderr: any) => {
+            if (error) {
+              console.log(`error: ${error.message}`);
+            }
+            else if (stderr) {
+              console.log(`stderr: ${stderr}`);
+            }
+            else {
+              console.log(stdout);
+            }
+          })
     };
 
     async setAvailable(): Promise<void> {

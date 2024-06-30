@@ -74,6 +74,7 @@ export class CustomAuthenticationProvider implements AuthenticationProvider {
         const now: Date = new Date();
         var deviceCodeDate = await this._storageService.getDeviceCodeDate();
 
+
         if(DEBUG === "true" && deviceCodeDate){
             console.log("Stored Device Code Date: " + deviceCodeDate);
         }
