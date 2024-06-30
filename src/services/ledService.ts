@@ -9,7 +9,7 @@ function setColor(red: number, green: number, blue: number, brightness: number){
         return;
     }
 
-    exec(`python3 ../python/setColor.py ${brightness} ${red} ${green} ${blue}`, (error: any, stdout: any, stderr: any) => {
+    exec(`python3 ./python/setColor.py ${brightness} ${red} ${green} ${blue}`, (error: any, stdout: any, stderr: any) => {
         if (error) {
           console.log(`error: ${error.message}`);
         }
@@ -38,7 +38,7 @@ export class ledService{
             return;
         }
 
-        exec('python3 ../python/clear.py', (error: any, stdout: any, stderr: any) => {
+        exec('python3 ./python/clear.py', (error: any, stdout: any, stderr: any) => {
             if (error) {
               console.log(`error: ${error.message}`);
             }

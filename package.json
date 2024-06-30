@@ -6,7 +6,7 @@
   "scripts": {
     "start": "tsc && node dist/StatusIndicator.js",
     "build": "tsc && npm run copy-files",
-    "copy-files": "copyfiles -u 1 ./src/python/*.py ./dist"
+    "copy-files": "copyfiles -u 1 ./src/python/*.py ./dist && copyfiles .env ./dist"
   },
   "author": "",
   "license": "ISC",
